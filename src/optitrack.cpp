@@ -3,6 +3,8 @@
 //NatNet
 #include <NatNetLinux/NatNetClient.h>
 
+#define ZUP true // OptiTrack's frame is Z-UP or not(Y-UP)?
+
 namespace libmotioncapture {
 
   class MotionCaptureOptitrackImpl{
@@ -19,10 +21,15 @@ namespace libmotioncapture {
   {
     pImpl = new MotionCaptureOptitrackImpl;
 
-    pImpl->client.connect(localIp, serverIp);
-    pImpl->version = pImpl->client.getVersionString();
-    pImpl->axisMultiplier = Point3f(-1, 1, 1);//0.001,0.001,0.001);
-    pImpl->axisOrder = Point3f(1,0,2);
+	pImpl->client.connect(localIp, serverIp);
+	pImpl->version = pImpl->client.getVersionString();
+	if(ZUP==true){
+	  pImpl->axisMultiplier = Point3f(1, 1, 1);//0.001,0.001,0.001);
+	  pImpl->axisOrder = Point3f(0,1,2);
+	}else{
+	  pImpl->axisMultiplier = Point3f(-1, 1, 1);//0.001,0.001,0.001);
+	  pImpl->axisOrder = Point3f(1,0,2);
+	}
   }
 
   const std::string & MotionCaptureOptitrack::version() const
