@@ -53,9 +53,8 @@ namespace libmotioncapture {
   }
 
 
-/*
   void MotionCaptureOptitrack::getObjectByRigidbody(const RigidBody & rb, libmotioncapture::Object & result) const{
-
+	/*
       std::stringstream sstr;
       sstr<<rb.id();
       const std::string name = sstr.str();
@@ -76,11 +75,12 @@ namespace libmotioncapture {
       }else{
           result = Object(name);
       }
-
+	*/
   }
-*/
-  /*
+
+
   void MotionCaptureOptitrack::getObjectByName(const std::string & name, libmotioncapture::Object & result) const{
+	/*
       std::vector<RigidBody> const & rBodies = pImpl->client.getLastFrame().rigidBodies();
       for(size_t i=0;i<rBodies.size();++i){
           std::stringstream sstr;
@@ -89,8 +89,8 @@ namespace libmotioncapture {
           if(ni==name){
               //getObjectByRigidbody(rBodies[i],result);
           }
-      }
-  }*/
+	  }*/
+  }
 
   void MotionCaptureOptitrack::getPointCloud(
     pcl::PointCloud<pcl::PointXYZ>::Ptr result) const
